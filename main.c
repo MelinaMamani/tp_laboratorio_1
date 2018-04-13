@@ -56,6 +56,8 @@ int main()
                 factorial(num1);
                 break;
             case 9:
+                //Si verifica es = 0 se sale del programa
+
                 if(verifica()==0)
                     seguir = 'N';
                 break;
