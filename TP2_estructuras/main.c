@@ -5,7 +5,7 @@
 
 
 int main(){
-system("title ABS formularios");
+system("title ABM formularios");
 char salir='S';
 
 eEmpleado gente[TAM];

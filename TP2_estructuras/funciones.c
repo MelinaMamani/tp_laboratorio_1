@@ -60,6 +60,8 @@ void hardCode(eSector sectores[]){
     sectores[4].isEmpty = 0;
 }
 
+//FUNCIONES DE UTILIDAD
+
 /** \brief Inicializa a los
  * empleados con 1
  */
@@ -118,6 +120,8 @@ int buscarEmpleado(eEmpleado vec[],int tam,int dni){
     }
     return indice;
 }
+
+//ABM ALTA, BAJA, MODIFICAR, LISTAR POR NOMBRES, Y GRAFICO DE EDADES
 
 void altaEmpleado(eEmpleado vec[],int tam){
     eEmpleado nuevoEmpleado;
@@ -462,6 +466,8 @@ void contarEdades(eEmpleado vec[], int tam){
     printf("<18\t19-35\t>35\n\n");
 
 }
+
+//INPUTS Y VALIDACIONES
 
 /**
 * \brief Verifica el ingreso de caracteres. Chequea para que

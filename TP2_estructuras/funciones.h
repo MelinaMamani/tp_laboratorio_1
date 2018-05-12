@@ -32,7 +32,6 @@ int getInt(char[]);
 float getFloat(char[]);
 char getChar(char[]);
 void inicializarEmpleados(eEmpleado[], int);
-void mostrarEmpleados(eEmpleado[], int, eSector[]);
 void mostrarEmpleado(eEmpleado);
 int buscarLibre(eEmpleado[], int);
 int buscarEmpleado(eEmpleado[], int, int);
