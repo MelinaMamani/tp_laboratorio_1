@@ -178,10 +178,13 @@ void altaEmpleado(eEmpleado vec[],int tam){
                    }
 
                    printf("Ingrese fecha de ingreso d / m / a\n");
+
                    nuevoEmpleado.fechaIngreso.dia = getInt("Dia: ");
                    nuevoEmpleado.fechaIngreso.dia = validarEntero(nuevoEmpleado.fechaIngreso.dia, 0, 32);
+
                    nuevoEmpleado.fechaIngreso.mes = getInt("Mes: ");
                    nuevoEmpleado.fechaIngreso.mes = validarEntero(nuevoEmpleado.fechaIngreso.mes, 0, 13);
+
                    nuevoEmpleado.fechaIngreso.anio = getInt("Anio: ");
                    nuevoEmpleado.fechaIngreso.anio = validarEntero(nuevoEmpleado.fechaIngreso.anio, 1900, 2019);
 
@@ -283,25 +286,45 @@ void modificaEmpleado(eEmpleado vec[], int tam){
                     printf("Ingrese nuevo nombre: ");
                     fflush(stdin);
                     gets(modEmpleado.nombre);
+
+                    while(strlen(modEmpleado.nombre)>41){
+                           printf("Reingrese nombre: ");
+                           fflush(stdin);
+                           gets(modEmpleado.nombre);
+                    }
+
                     strcpy(vec[esta].nombre, modEmpleado.nombre);
                     break;
                 case 3:
                     modEmpleado.edad = getInt("Ingrese nueva edad: ");
+                    modEmpleado.edad = validarEntero(modEmpleado.edad, 0,100);
+
                     vec[esta].edad = modEmpleado.edad;
                     break;
                 case 4:
                     modEmpleado.sexo = getChar("Ingrese nuevo sexo: ");
+                    while(modEmpleado.sexo!='f' && modEmpleado.sexo!='m'){
+                        modEmpleado.sexo = getChar("Error. Reingrese sexo: ");
+                    }
                     vec[esta].sexo = modEmpleado.sexo;
                     break;
                 case 5:
                     modEmpleado.sueldo = getFloat("Ingrese nuevo sueldo: ");
+                    while(modEmpleado.sueldo<=0){
+                        modEmpleado.sueldo = getFloat("Reingrese nuevo sueldo: ");
+                    }
                     vec[esta].sueldo = modEmpleado.sueldo;
                     break;
                 case 6:
                     printf("Ingrese nueva fecha de ingreso d / m / a: ");
                     modEmpleado.fechaIngreso.dia = getInt("Dia: ");
+                    modEmpleado.fechaIngreso.dia = validarEntero(modEmpleado.fechaIngreso.dia, 0, 32);
+
                     modEmpleado.fechaIngreso.mes = getInt("Mes: ");
+                    modEmpleado.fechaIngreso.mes = validarEntero(modEmpleado.fechaIngreso.mes, 0, 13);
+
                     modEmpleado.fechaIngreso.anio = getInt("Anio: ");
+                    modEmpleado.fechaIngreso.anio = validarEntero(modEmpleado.fechaIngreso.anio, 1900, 2019);
 
                     vec[esta].fechaIngreso.dia = modEmpleado.fechaIngreso.dia;
                     vec[esta].fechaIngreso.mes = modEmpleado.fechaIngreso.mes;
@@ -314,6 +337,7 @@ void modificaEmpleado(eEmpleado vec[], int tam){
                     printf("\n4) Compras");
                     printf("\n5) Deposito");
                     modEmpleado.idSector = getInt("Ingrese nuevo sector: ");
+                    modEmpleado.idSector = validarEntero(modEmpleado.idSector, 0, 6);
                     vec[esta].idSector = modEmpleado.idSector;
                     break;
                 default:
