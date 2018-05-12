@@ -1,11 +1,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
-#define TAM 10
-#define RRHH 1
-#define SIS 2
-#define ADM 3
-#define COM 4
-#define DEP 5
+#define TAM 20
+
 
 
 typedef struct{

@@ -3,6 +3,15 @@
 #include <string.h>
 #include "funciones.h"
 
+/** \brief Muestra un menú
+ * y pide al usuario que ingrese
+ * \param "opcion"
+ * \param
+ * \return devuelve opcion
+ *
+ */
+
+
 int menu(){
 
     int opcion;
@@ -18,6 +27,11 @@ int menu(){
 
     return opcion;
 }
+
+
+/** \brief Da de alta
+ * a todos los sectores
+ */
 
 void hardCode(eSector sectores[]){
     eSector nuevoSector;
@@ -46,12 +60,24 @@ void hardCode(eSector sectores[]){
     sectores[4].isEmpty = 0;
 }
 
+/** \brief Inicializa a los
+ * empleados con 1
+ */
+
 void inicializarEmpleados(eEmpleado vec[],int tam){
     int i;
     for(i=0;i<tam;i++){
         vec[i].isEmpty=1;
     }
 }
+
+/** \brief
+ *  Busca un lugar libre en empleados
+ * \param
+ * \param
+ * \return regresa el indice donde haya lugar
+ *
+ */
 
 int buscarLibre(eEmpleado vec[] ,int tam){
     int indice=-1;
@@ -65,27 +91,22 @@ int buscarLibre(eEmpleado vec[] ,int tam){
     return indice;
 }
 
-void mostrarEmpleados(eEmpleado vec[], int tam, eSector sec[]){
-    int i, j;
-    printf("\nDNI   \tNombre\tEdad\tSexo\tSueldo  \tF. de Ingr.\tSector\n");
-    for(i=0; i< tam; i++)
-    {
-        if(vec[i].isEmpty == 0)
-        {
-            for(j=0; j<5; j++){
-                if(vec[i].idSector==sec[j].id){
-                    printf("%4d  \t%s \t%d \t%c \t$%8.2f \t%02d/%02d/%4d \t%s\n", vec[i].dni, vec[i].nombre, vec[i].edad, vec[i].sexo, vec[i].sueldo, vec[i].fechaIngreso.dia, vec[i].fechaIngreso.mes, vec[i].fechaIngreso.anio, sec[j].descripcion);
-                }
-            }
-        }
-    }
-    printf("\n");
-}
+/** \brief Muestra un empleado
+ *  segun el indice
+ *
+ */
 
 void mostrarEmpleado(eEmpleado emp){
     printf("%4d     %s      %d     %c     $%10.2f    %02d/%02d/%4d     Num. Sector: %d\n", emp.dni, emp.nombre, emp.edad, emp.sexo, emp.sueldo, emp.fechaIngreso.dia, emp.fechaIngreso.mes, emp.fechaIngreso.anio, emp.idSector);
 }
 
+/** \brief
+ *  Busca un empleado segun el dni ingresado
+ * \param
+ * \param
+ * \return regresa el indice donde esta el empleado
+ *
+ */
 int buscarEmpleado(eEmpleado vec[],int tam,int dni){
     int indice=-1;
     int i;
@@ -134,18 +155,35 @@ void altaEmpleado(eEmpleado vec[],int tam){
                    fflush(stdin);
                    gets(nuevoEmpleado.nombre);
 
+                   while(strlen(nuevoEmpleado.nombre)>41){
+                           printf("Reingrese nombre: ");
+                           fflush(stdin);
+                           gets(nuevoEmpleado.nombre);
+                   }
+
                    nuevoEmpleado.edad = getInt("Ingrese su edad: ");
 
-                   nuevoEmpleado.edad = validarEdad(nuevoEmpleado.edad, 0, 100);
+                   nuevoEmpleado.edad = validarEntero(nuevoEmpleado.edad, 0, 100);
 
                    nuevoEmpleado.sexo = getChar("Ingrese el sexo: ");
 
+                   while(nuevoEmpleado.sexo!='f' && nuevoEmpleado.sexo!='m'){
+                        nuevoEmpleado.sexo = getChar("Error. Reingrese sexo: ");
+                    }
+
                    nuevoEmpleado.sueldo = getFloat("Ingrese el sueldo: ");
+
+                   while(nuevoEmpleado.sueldo<=0){
+                        nuevoEmpleado.sueldo = getFloat("Reingrese sueldo: ");
+                   }
 
                    printf("Ingrese fecha de ingreso d / m / a\n");
                    nuevoEmpleado.fechaIngreso.dia = getInt("Dia: ");
+                   nuevoEmpleado.fechaIngreso.dia = validarEntero(nuevoEmpleado.fechaIngreso.dia, 0, 32);
                    nuevoEmpleado.fechaIngreso.mes = getInt("Mes: ");
+                   nuevoEmpleado.fechaIngreso.mes = validarEntero(nuevoEmpleado.fechaIngreso.mes, 0, 13);
                    nuevoEmpleado.fechaIngreso.anio = getInt("Anio: ");
+                   nuevoEmpleado.fechaIngreso.anio = validarEntero(nuevoEmpleado.fechaIngreso.anio, 1900, 2019);
 
                    printf("\n1) RRHH");
                    printf("\n2) Sistemas");
@@ -153,6 +191,7 @@ void altaEmpleado(eEmpleado vec[],int tam){
                    printf("\n4) Compras");
                    printf("\n5) Deposito");
                    nuevoEmpleado.idSector = getInt("\nIngrese un sector: ");
+                   nuevoEmpleado.idSector = validarEntero(nuevoEmpleado.idSector, 0, 6);
 
                    vec[indice] = nuevoEmpleado;
 
@@ -333,8 +372,8 @@ void ordenarPorNombre(eEmpleado vec[], int tam, eSector sec[]){
                 }
             }
     }
-    printf("\nNombre\tDNI   \tEdad\tSexo\tSueldo\tF. de Ingr.\tSector\n");
-    for(i=0; i< tam; i++)
+    printf("\nNombre\tDNI\tEdad\tSexo\tSueldo\tF. de Ingr.\tSector\n");
+    for(i=0; i<tam; i++)
     {
         if(vec[i].isEmpty == 0)
         {
