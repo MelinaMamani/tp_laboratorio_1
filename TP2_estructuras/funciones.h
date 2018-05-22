@@ -2,8 +2,6 @@
 #define FUNCIONES_H_INCLUDED
 #define TAM 20
 
-
-
 typedef struct{
     int dia;
     int mes;
