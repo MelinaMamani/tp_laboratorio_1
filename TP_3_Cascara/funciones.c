@@ -267,7 +267,7 @@ void altaPelicula(ePelicula* peliculas,int tam){
 
                     nuevaPelicula->puntaje = getInt("Ingrese el puntaje: ");
 
-                   while((nuevaPelicula->puntaje)<0 && (nuevaPelicula->puntaje)>100){
+                   while((nuevaPelicula->puntaje)<0 || (nuevaPelicula->puntaje)>100){
                         nuevaPelicula->puntaje = getInt("Reingrese puntaje: ");
                    }
 
