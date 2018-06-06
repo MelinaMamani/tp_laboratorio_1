@@ -416,7 +416,7 @@ void modificaPelicula(ePelicula* peliculas, int tam){
                     break;
                 case 3:
                     modPelicula->duracion = getInt("Ingrese la duracion: ");
-                   while(modPelicula->duracion>500){
+                   while(modPelicula->duracion<0 || modPelicula->duracion>500){
                         modPelicula->duracion = getInt("Reingrese la duracion: ");
                     }
                     (peliculas+esta)->duracion = modPelicula->duracion;

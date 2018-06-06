@@ -6,7 +6,6 @@
 int main()
 {
     char seguir='s';
-    int cantidad;
 
     ePelicula* peliculas;
     peliculas = newArrayPeliculas(TAM);
