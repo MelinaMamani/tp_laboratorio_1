@@ -229,6 +229,19 @@ int al_contains(ArrayList* this, void* pElement)
 int al_set(ArrayList* this, int index,void* pElement)
 {
     int returnAux = -1;
+    int i;
+
+    if(this != NULL && pElement != NULL){
+        if(index >= 0 && index < this->len(this)){
+            for(i=0; i<this->len(this); i++){
+                if(this->get(this, i) == this->get(this, index)){
+                    *(this->pElements +  i) = pElement;
+                    returnAux = 0;
+                    break;
+                }
+            }
+        }
+    }
 
     return returnAux;
 }
