@@ -256,6 +256,19 @@ int al_set(ArrayList* this, int index,void* pElement)
 int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
+    int i;
+
+    if(this != NULL){
+        if(index >= 0 && index < this->len(this)){
+            for(i=0; i<this->len(this); i++){
+                if(this->get(this, i) == this->get(this, index)){
+                    free(this->get(this, index));
+                    returnAux = 0;
+                    break;
+                }
+            }
+        }
+    }
 
     return returnAux;
 }
