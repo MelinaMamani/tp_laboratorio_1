@@ -278,14 +278,16 @@ int al_remove(ArrayList* this,int index)
 int al_clear(ArrayList* this)
 {
     int returnAux = -1;
-    //int i;
+    int i;
 
-    /*if(this != NULL){
-       for(i=0; i<this->len(this); i++){
-              this->get(this, i)= NULL;
+    if(this != NULL){
+        for(i=0; i<this->len(this); i++){
+            free(this->get(this, i));
         }
-      */
-    return returnAux = 0;
+        this->size = 0;
+        returnAux = 0;
+    }
+    return returnAux;
 }
 
 
@@ -299,6 +301,11 @@ int al_clear(ArrayList* this)
 ArrayList* al_clone(ArrayList* this)
 {
     ArrayList* returnAux = NULL;
+    int i;
+
+    if(this != NULL)
+    {
+    }
 
     return returnAux;
 }
