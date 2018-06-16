@@ -120,6 +120,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="xstring.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="xstring.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -256,17 +256,12 @@ int al_set(ArrayList* this, int index,void* pElement)
 int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
-    int i;
 
     if(this != NULL){
         if(index >= 0 && index < this->len(this)){
-            for(i=0; i<this->len(this); i++){
-                if(this->get(this, i) == this->get(this, index)){
-                    free(this->get(this, index));
-                    returnAux = 0;
-                    break;
-                }
-            }
+            free(this->get(this, index));
+            contract(this, index);
+            returnAux = 0;
         }
     }
 
@@ -283,13 +278,20 @@ int al_remove(ArrayList* this,int index)
 int al_clear(ArrayList* this)
 {
     int returnAux = -1;
+    //int i;
 
-    return returnAux;
+    /*if(this != NULL){
+       for(i=0; i<this->len(this); i++){
+              this->get(this, i)= NULL;
+        }
+      */
+    return returnAux = 0;
 }
 
 
 
-/** \brief Returns an array containing all of the elements in this list in proper sequence
+
+/* \brief Returns an array containing all of the elements in this list in proper sequence
  * \param pList ArrayList* Pointer to arrayList
  * \return ArrayList* Return  (NULL) if Error [pList is NULL pointer]
  *                          - (New array) if Ok
@@ -455,6 +457,20 @@ int expand(ArrayList* this,int index)
 int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
+    int i;
 
+    if(this != NULL){
+        if(index >=0 && index<this->len(this)){
+            for(i=index; i<this->len(this)-1; i++){
+               this->set(this,i,this->get(this, i+1));
+
+               if(i==this->len(this)-1){
+                    free(this->get(this, i));
+               }
+            }
+            this->size--;
+            returnAux = 0;
+        }
+    }
     return returnAux;
 }

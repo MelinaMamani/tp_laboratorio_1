@@ -2437,7 +2437,7 @@
 	<string.h>
 	"../inc/Employee.h"
 
-1529014444 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\arraylist\examples\example_4\src\main.c
+1529114424 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\arraylist\examples\example_4\src\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2461,9 +2461,15 @@
 	"../../inc/ArrayList.h"
 	"../../inc/Employee.h"
 
-1528922339 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\arraylist\examples\example_4\src\arraylist.c
+1529125334 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\arraylist\examples\example_4\src\arraylist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"../inc/ArrayList.h"
+
+1529124851 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\arraylist\examples\example_4\src\xstring.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
 
