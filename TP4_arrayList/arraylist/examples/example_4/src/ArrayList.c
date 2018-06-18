@@ -228,6 +228,10 @@ int al_remove(ArrayList* this,int index)
     if(this != NULL){
         if(index >= 0 && index < this->len(this)){
             contract(this, index);
+            if(this->reservedSize - this->size > AL_INCREMENT)
+            {
+                resizeDown(this);
+            }
             returnAux = 0;
         }
     }
@@ -267,11 +271,20 @@ int al_clear(ArrayList* this)
  */
 ArrayList* al_clone(ArrayList* this)
 {
+
     ArrayList* returnAux = NULL;
+    int i;
 
     if(this != NULL)
         {
-            returnAux = this->pElements;
+            returnAux = al_newArrayList();
+            if(returnAux != NULL)
+                {
+                    for(i=0; i<this->len(this); i++)
+                    {
+                        this->add(returnAux, this->get(this, i));
+                    }
+                }
         }
 
     return returnAux;
@@ -415,11 +428,9 @@ int resizeDown(ArrayList* this)
 
     if(this != NULL)
     {
-        if(this->reservedSize - this->size > AL_INCREMENT)
-        {
-            this->pElements = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize - AL_INCREMENT));
-            returnAux = 0;
-        }
+        this->pElements = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize - AL_INCREMENT));
+        this->reservedSize = this->reservedSize - AL_INCREMENT;
+        returnAux = 0;
     }
 
     return returnAux;
@@ -435,6 +446,14 @@ int resizeDown(ArrayList* this)
 int expand(ArrayList* this,int index)
 {
     int returnAux = -1;
+    int i;
+
+    if(this != NULL){
+        if(index >=0 && index<this->len(this)){
+
+            returnAux = 0;
+        }
+    }
 
     return returnAux;
 }
