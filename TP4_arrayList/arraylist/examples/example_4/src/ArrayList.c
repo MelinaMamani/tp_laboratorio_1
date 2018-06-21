@@ -494,7 +494,7 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                     {
                         aux = this->get(this, i);
                         this->set(this, i, this->get(this, j));
-                        this->set(this, j, aux);
+                        *(this->pElements + j) = aux;
                     }
                 }
                 else
@@ -503,7 +503,7 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                     {
                         aux = this->get(this, i);
                         this->set(this, i, this->get(this, j));
-                        this->set(this, j, aux);
+                        *(this->pElements + j) = aux;
                     }
                 }
             }
