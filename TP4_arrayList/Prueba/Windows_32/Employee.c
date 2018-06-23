@@ -24,6 +24,18 @@ int menu(){
 
 int employee_compare(void* pEmployeeA,void* pEmployeeB)
 {
+    Employee* E1 = (Employee*) pEmployeeA;
+    Employee* E2 = (Employee*) pEmployeeB;
+
+    if(strcmp(E1->name, E2->name)>0)
+    {
+        return 1;
+    }
+    if(strcmp(E1->name, E2->name)<0)
+    {
+        return -1;
+    }
+
     return 0;
 }
 
