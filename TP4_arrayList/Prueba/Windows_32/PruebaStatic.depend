@@ -134,3 +134,31 @@
 	<stdarg.h>
 	<string.h>
 
+1529808767 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\prueba\windows_32\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1528917646 c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\prueba\windows_32\arraylist.h
+
+1528917646 c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\prueba\windows_32\employee.h
+
+1528917646 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\prueba\windows_32\xlook.c
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<string.h>
+
+1529808645 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\prueba\windows_32\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1529808624 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\prueba\windows_32\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+

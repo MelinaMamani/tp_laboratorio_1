@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ArrayList.h"
 #include "Employee.h"
-#define TAM 1001
 
 int menu(){
     int opcion;
@@ -20,6 +20,7 @@ int menu(){
     scanf("%d", &opcion);
 
     return opcion;
+    system("cls");
 }
 
 int employee_compare(void* pEmployeeA,void* pEmployeeB)
@@ -27,20 +28,22 @@ int employee_compare(void* pEmployeeA,void* pEmployeeB)
     Employee* E1 = (Employee*) pEmployeeA;
     Employee* E2 = (Employee*) pEmployeeB;
 
-    if(strcmp(E1->name, E2->name)>0)
+    int returnAux;
+
+    if(stricmp(E1->name, E2->name)>0)
     {
-        return 1;
+        returnAux = 1;
     }
-    if(strcmp(E1->name, E2->name)<0)
+    if(stricmp(E1->name, E2->name)<0)
     {
-        return -1;
+        returnAux = -1;
     }
-    if(strcmp(E1->name, E2->name)==0)
+    if(stricmp(E1->name, E2->name)==0)
     {
-        return 0;
+        returnAux = 0;
     }
 
-    return 0;
+    return returnAux;
 }
 
 
@@ -52,10 +55,11 @@ void employee_print(Employee* this, ArrayList* arrayList)
 
     xlkSortPrintf(1,"%s,%s,%s",3,"ID EMPLEADO","NOMBRE","APELLIDO");
 
-            for( i=0;i < arrayList->len(arrayList);i++ )
+            for( i=0;i <arrayList->len(arrayList);i++ )
             {
                 this = arrayList->get(arrayList,i);
-                xlkSortPrintf(3,"%d,%s,%s",3,this->id, this->name, this->lastName);
+                xlkSortPrintf(3,"%d,%s,%s",3,employee_getId(this), employee_getName(this), employee_getLastName(this));
+
                 if( i == 125*pause)
                 {
                     system("pause");
@@ -74,8 +78,7 @@ Employee* employee_new(void)
 
 void employee_delete(Employee* this)
 {
-
-
+    free(this);
 }
 
 void employee_setId(Employee* this, int id)

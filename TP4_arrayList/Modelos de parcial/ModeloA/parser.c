@@ -7,7 +7,8 @@ int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee)
 {
     char var1[10], var2[51], var3[51], var4[10];
     int cant, i;
-    pFile= fopen("data.csv", "r");
+
+    pFile= fopen("data2.csv", "r");
 
     if((pFile)==NULL){
         printf("No se pudo abrir el archivo.\n");
@@ -17,7 +18,8 @@ int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee)
 
     while(!feof(pFile)){
 
-        cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n", var1, var2, var3, var4);
+
+            cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n", var1, var2, var3, var4);
 
             if(cant!=4){
                 if(feof(pFile)){
@@ -38,6 +40,7 @@ int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee)
             employee_setIsEmpty(eAux,var4);
             pArrayListEmployee->add(pArrayListEmployee,eAux);
         }
+
     fclose(pFile);
 
     return 0;

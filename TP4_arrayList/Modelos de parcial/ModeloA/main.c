@@ -18,20 +18,19 @@ int main()
 {
     char seguir = 's';
     FILE* p;
+    int var;
     Employee* lista = employee_new();
-
-    ArrayList* arrayList;
-
-    arrayList = al_newArrayList();
+    ArrayList* arrayList = al_newArrayList();
 
     do{
-            system("cls");
-    switch(menu()){
+        switch(menu()){
 
         case 1:
-            if(parserEmployee(p, arrayList)==0){
+            if(parserEmployee(p, arrayList)){
                     printf("Empleados cargados. \n\n");
             }
+            int var = arrayList->len(arrayList);
+            printf("Len : %d\n", var);
             break;
 
         case 2:
@@ -39,7 +38,7 @@ int main()
             break;
 
         case 3:
-            arrayList->sort(arrayList, employee_compare, 1);
+            arrayList->sort(arrayList, employee_compare, 0);
             employee_print(lista, arrayList);
             break;
 
@@ -56,8 +55,6 @@ int main()
             seguir = 'n';
             break;
         }
-        system("pause");
-
     }while(seguir == 's');
     return 0;
 }
