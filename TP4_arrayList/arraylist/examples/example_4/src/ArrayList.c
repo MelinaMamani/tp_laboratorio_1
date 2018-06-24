@@ -576,6 +576,10 @@ int expand(ArrayList* this,int index)
 
             returnAux = 0;
         }
+        if(this->len(this)==this->reservedSize)
+        {
+            resizeUp(this);
+        }
     }
 
     return returnAux;
