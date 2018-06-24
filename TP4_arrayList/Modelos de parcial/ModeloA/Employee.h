@@ -36,6 +36,10 @@ Employee* employee_new(void);
 
 void employee_delete(Employee* this);
 
+void employee_add(Employee* this, ArrayList* arrayList);
+
+void employee_remove(Employee* this, ArrayList* arrayList);
+
 void employee_setId(Employee* this, int id);
 int employee_getId(Employee* this);
 

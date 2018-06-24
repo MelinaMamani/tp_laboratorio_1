@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ArrayList.h"
-#include "Employee.h"
+#include "../ModeloA/ArrayList.h"
+#include "../ModeloA/Employee.h"
 
 int menu(){
     int opcion;
@@ -46,6 +46,13 @@ int employee_compare(void* pEmployeeA,void* pEmployeeB)
     return returnAux;
 }
 
+void one_employee_print(Employee* this)
+{
+    if(this !=NULL)
+    {
+        xlkSortPrintf(3,"%d,%s,%s",3,employee_getId(this), employee_getName(this), employee_getLastName(this));
+    }
+}
 
 void employee_print(Employee* this, ArrayList* arrayList)
 {
@@ -66,6 +73,132 @@ void employee_print(Employee* this, ArrayList* arrayList)
                     pause++;
                 }
             }
+}
+
+void employee_add(Employee* this, ArrayList* arrayList)
+{
+    int i;
+    char nombre[51], apellido[51];
+    char confirma;
+
+    if(this != NULL && arrayList != NULL)
+    {
+        for(i=0;i<=arrayList->len(arrayList);i++)
+    {
+        employee_setId(this, i+1);
+    }
+
+        employee_setIsEmpty(this,"true");
+
+        printf("\nIngrese nombre del empleado: ");
+        fflush(stdin);
+        gets(nombre);
+        employee_setName(this, nombre);
+
+        printf("\nIngrese apellido del empleado: ");
+        fflush(stdin);
+        gets(apellido);
+        employee_setLastName(this, apellido);
+
+        do{
+            printf("\nConfirma el alta de Pelicula? s/n: ");
+            fflush(stdin);
+            scanf("%c", &confirma);
+            confirma = tolower(confirma);
+        }while(confirma != 's' && confirma != 'n');
+
+        if(confirma == 's'){
+            arrayList->add(arrayList, this);
+            system("cls");
+            printf("\nAlta realizada.\n\n");
+        }
+        else{
+            system("cls");
+            printf("\nAlta no realizada.\n\n");
+        }
+    }
+}
+
+void employee_remove(Employee* this, ArrayList* arrayList)
+{
+    int id;
+    char confirma;
+
+    if(this != NULL && arrayList != NULL)
+    {
+        getInt(&id, "Ingresar id del empleado a eliminar: ", "\nError. Reingrese id: ", 1, arrayList->len(arrayList));
+
+        do{
+            printf("\nConfirma baja? s/n: ");
+            fflush(stdin);
+            scanf("%c", &confirma);
+            confirma = tolower(confirma);
+        }while(confirma != 's' && confirma != 'n');
+
+        if(confirma == 's'){
+            this = (Employee*) arrayList->pop(arrayList, id-1);
+            printf("\nEmpleado eliminado: %s", employee_getName(this));
+            printf("\nBaja realizada.\n\n");
+        }
+        else{
+            printf("\nBaja cancelada.\n\n");
+        }
+    }
+}
+
+int getInt(int* input,char message[],char eMessage[], int lowLimit, int hiLimit)
+{
+    int indice = 0;
+
+    printf("%s",message);
+    scanf("%d",input);
+
+    while( *input < lowLimit || *input >hiLimit)
+    {
+        printf("%s", eMessage);
+        scanf("%d",input);
+    }
+
+    if(*input >lowLimit || *input <hiLimit){
+        return indice;
+    }
+    else{
+        indice = -1;
+        return indice;
+    }
+}
+
+void employee_subList(Employee* this, ArrayList* arrayList)
+{
+    int desde, hasta, i;
+    ArrayList* arrayList2 = al_newArrayList();
+
+    if(this != NULL && arrayList != NULL)
+    {
+        getInt(&desde,"Ingrese el id desde donde quiere obtener la lista: ","\nError. Reingrese id:",0,arrayList->len(arrayList)-1);
+        getInt(&hasta,"\nIngrese el id hasta donde quiere obtener la lista: ","\nError. Reingrese id:",desde+1,arrayList->len(arrayList));
+
+        arrayList2 = arrayList->subList(arrayList,desde-1,hasta);
+
+        printf("\nEmpleados desde %d hasta %d\n",desde,hasta);
+        xlkCenterPrintf("SUBLISTA DE EMPLEADOS",1);
+        xlkSortPrintf(1,"%s,%s,%s",3,"ID EMPLEADO","NOMBRE","APELLIDO");
+
+        for(i=0; i<arrayList2->len(arrayList2); i++)
+        {
+            if(arrayList->isEmpty(arrayList) == 0)
+            {
+             this = (Employee*)arrayList->get(arrayList2,i);
+             one_employee_print(this);
+            }
+        }
+    }
+    else
+    {
+        printf("Error en sublista de empleados.\n");
+        exit(1);
+    }
+
 }
 
 Employee* employee_new(void)

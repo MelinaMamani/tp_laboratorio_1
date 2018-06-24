@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1529875196 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\modeloa\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../ModeloA/ArrayList.h"
+
+1529517902 c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\modeloa\arraylist.h
+
+1529879442 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\modeloa\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../ModeloA/ArrayList.h"
+	"../ModeloA/Employee.h"
+
+1529882889 c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\modeloa\employee.h
+
+1528917646 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\modeloa\xlook.c
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<string.h>
+
+1529884172 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\pairprogramming\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../ModeloA/ArrayList.h"
+	"../ModeloA/Employee.h"
+
+1529875183 source:c:\users\usuario\desktop\tp_laboratorio_1\tp4_arraylist\modelos de parcial\modeloa\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"../ModeloA/ArrayList.h"
+	"../ModeloA/Employee.h"
+

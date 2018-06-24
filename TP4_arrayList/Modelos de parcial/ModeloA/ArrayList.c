@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ArrayList.h"
+#include "../ModeloA/ArrayList.h"
 
 // funciones privadas
 int resizeUp(ArrayList* this);
@@ -119,13 +119,9 @@ int al_deleteArrayList(ArrayList* this)
 int al_len(ArrayList* this)
 {
     int returnAux = -1;
-    int i, actualSize = 0;
 
     if(this != NULL){
-        for(i=0; i<this->size; i++){
-            actualSize++;
-        }
-        return returnAux = actualSize;
+        return returnAux = this->size;
     }
 
     return returnAux;
@@ -141,16 +137,10 @@ int al_len(ArrayList* this)
 void* al_get(ArrayList* this, int index)
 {
     void* returnAux = NULL;
-    int i;
 
     if(this != NULL){
         if( index >= 0 && index < this->len(this) ){
-            for(i=0; i<this->len(this); i++){
-                if(this->pElements[i] == this->pElements[index]){
-                    returnAux = this->pElements[i];
-                    break;
-                }
-            }
+            returnAux = *((this->pElements)+ index);
         }
     }
 
@@ -198,17 +188,11 @@ int al_contains(ArrayList* this, void* pElement)
 int al_set(ArrayList* this, int index,void* pElement)
 {
     int returnAux = -1;
-    int i;
 
     if(this != NULL && pElement != NULL){
         if(index >= 0 && index < this->len(this)){
-            for(i=0; i<this->len(this); i++){
-                if(this->get(this, i) == this->get(this, index)){
-                    *(this->pElements +  i) = pElement;
-                    returnAux = 0;
-                    break;
-                }
-            }
+            *(this->pElements +  index) = pElement;
+            returnAux = 0;
         }
     }
 
@@ -483,34 +467,28 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
     int i, j;
     void* aux = NULL;
 
-    if(this != NULL && pFunc != NULL && (order == 0 || order == 1))
+    if(this != NULL && pFunc != NULL && (order ==0 || order == 1))
     {
-        //printf("Entra al primer if\n");
         for(i=0; i<this->len(this)-1; i++)
         {
-            //printf("Primera it\n");
             for(j=i+1; j<this->len(this); j++)
             {
-                //printf("Segunda it\n");
                 if(order == 1)
                 {
-                    //printf("Es ascendente\n");
                     if(pFunc(this->get(this, i), this->get(this, j))>0)
                     {
-                         //printf("Esta por salir\n");
                         aux = this->get(this, i);
                         this->set(this, i, this->get(this, j));
-                        *(this->pElements + j) = aux;
+                        this->set(this, j, aux);
                     }
                 }
                 else
                 {
-                    //printf("Entra al desc\n");
                     if(pFunc(this->get(this, i), this->get(this, j))<0)
                     {
                         aux = this->get(this, i);
                         this->set(this, i, this->get(this, j));
-                        *(this->pElements + j) = aux;
+                        this->set(this, j, aux);
                     }
                 }
             }

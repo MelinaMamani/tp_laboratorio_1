@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArrayList.h"
-#include "Employee.h"
+#include "../ModeloA/ArrayList.h"
+#include "../ModeloA/Employee.h"
 
 int parserEmployee(FILE* pFile , ArrayList* pArrayListEmployee)
 {
     char var1[10], var2[51], var3[51], var4[10];
-    int cant, i;
+    int cant;
 
-    pFile= fopen("data2.csv", "r");
+    pFile= fopen("data.csv", "r");
 
     if((pFile)==NULL){
         printf("No se pudo abrir el archivo.\n");
